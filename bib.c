@@ -17,7 +17,7 @@ int lerTasks(tarefas *tfs, char nome[]){ //ler tarefas já armazenadas no arquiv
 }
 
 
-int quantitycheck(tarefas *tfs){ // descobre a quantidade de tasks armazenadas na lista de tarefa.
+int quantitycheck(tarefas *tfs){ // descobre a quantidade de tasks armazenadas na lista de tarefa(acabou não sendo usada, mas mantive caso precise usar no futuro).
     int count = 0;
     FILE *f = fopen("tarefas.bin", "rb");
     fread(&tfs->qtd, sizeof(int), 1, f);
