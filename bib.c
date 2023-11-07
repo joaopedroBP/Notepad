@@ -203,3 +203,86 @@ int edit_task(tarefas *tfs){ //Função que permite editar tarefas existentes
     return 0;
 }
 
+int list_by_est(tarefas tfs){//lista apenas tarefas que possuem o estado que o usuario desejar!
+    if(tfs.qtd == 0 ){
+        printf("\nNenhuma tarefa salva!");
+        return 1;
+    }
+
+    printf("\n");
+    char status[200]; 
+    printf("Qual o estado das tarefas que deseja ver?: ");
+    scanf(" %[^\n]", status);
+
+    printf("\nSua(s) tarefa(s):\n");
+
+    for (int i = 0; i < tfs.qtd; i++) {
+        if (strcmp(tfs.tarefas[i].estado, status) == 0) {
+            printf("\n");
+            printf("Numero da sua tarefa: %d\n", i + 1);
+            printf("Prioridade: %d\n", tfs.tarefas[i].prioridade);
+            printf("Descricao: %s\n", tfs.tarefas[i].descricao);
+            printf("Categoria: %s\n", tfs.tarefas[i].categoria);
+            printf("Estado: %s\n", tfs.tarefas[i].estado);
+        }
+    }
+    return 0;
+}
+
+int list_by_cat(tarefas tfs){//lista apenas as tarefas que possuem a prioridade que o usuario desejar
+    if(tfs.qtd == 0 ){
+        printf("\nNenhuma tarefa salva!");
+        return 1;
+    }
+
+    printf("\n");
+    char status[200]; 
+    printf("Qual a categoria das tarefas que deseja ver?: ");
+    scanf(" %[^\n]", status);
+
+    printf("\nSua(s) tarefa(s):\n");
+
+    for (int i = 0; i < tfs.qtd; i++) {
+        if (strcmp(tfs.tarefas[i].categoria, status) == 0) {
+            printf("\n");
+            printf("Numero da sua tarefa: %d\n", i + 1);
+            printf("Prioridade: %d\n", tfs.tarefas[i].prioridade);
+            printf("Descricao: %s\n", tfs.tarefas[i].descricao);
+            printf("Categoria: %s\n", tfs.tarefas[i].categoria);
+            printf("Estado: %s\n", tfs.tarefas[i].estado);
+        }
+    }
+    return 0;
+}
+
+int list_by_pri_cat(tarefas tfs){//lista apenas as tarefas com  prioridade e a categoria que o usuario desejar!
+    if(tfs.qtd == 0){
+        printf("Nenhuma tarefa salva!");
+        return 1;
+    }
+
+    printf("\n");
+
+    int pri;
+    printf("Qual a prioridade das tarefas que vc dejesa ver?:");
+    scanf("%d",&pri);
+
+    printf("\n");
+    char status[200]; 
+    printf("Qual a categoria das tarefas que deseja ver?: ");
+    scanf(" %[^\n]", status);
+
+    printf("\nSuas tarefas:\n");
+
+    for(int i = 0; i < tfs.qtd; i++){
+        if(strcmp(tfs.tarefas[i].categoria, status) == 0 && tfs.tarefas[i].prioridade == pri){
+            printf("\n");
+            printf("Numero da sua tarefa: %d\n", i + 1);
+            printf("Prioridade: %d\n", tfs.tarefas[i].prioridade);
+            printf("Descricao: %s\n", tfs.tarefas[i].descricao);
+            printf("Categoria: %s\n", tfs.tarefas[i].categoria);
+            printf("Estado: %s\n", tfs.tarefas[i].estado);
+        }
+    }
+    return 0;
+}
