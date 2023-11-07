@@ -43,6 +43,15 @@ int main(){
             case 5:
                 edit_task(&tfs);
                 break;
+            case 6:
+                list_by_est(tfs);
+                break;
+            case 7:
+                list_by_cat(tfs);
+                break;
+            case 8:
+                list_by_pri_cat(tfs);
+                break;
         }
     }
 
