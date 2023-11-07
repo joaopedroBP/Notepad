@@ -23,4 +23,6 @@ int lerTasks(tarefas *tfs,char nome[]);
 int saveStruckt(tarefas *tfs , char nome[]);
 int list_by_pri(tarefas tfs);
 int edit_task(tarefas *tfs);
-
+int list_by_est(tarefas tfs);
+int list_by_cat(tarefas tfs);
+int list_by_pri_cat(tarefas tfs);
