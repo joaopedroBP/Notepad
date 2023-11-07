@@ -52,6 +52,15 @@ int main(){
             case 8:
                 list_by_pri_cat(tfs);
                 break;
+            case 9:
+                exp_by_pri(tfs);
+                break;
+            case 10:
+                exp_by_cat(tfs);
+                break;
+            case 11:
+                exp_by_pri_cat(tfs);
+                break;
         }
     }
 
