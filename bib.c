@@ -286,3 +286,86 @@ int list_by_pri_cat(tarefas tfs){//lista apenas as tarefas com  prioridade e a c
     }
     return 0;
 }
+
+int exp_by_pri(tarefas tfs){// cria um txt com as tarefas com a prioridade que o usuario desejar
+    if(tfs.qtd == 0 ){
+        printf("\nNenhuma tarefa salva!");
+        return 1;
+    }
+    int pri;
+    printf("Qual a prioridade das tarefas que dejesa exportar?: ");
+    scanf("%d", &pri);
+
+    FILE *f = fopen("Tarefas.txt","w");
+    fprintf(f,"Suas tarefas\n");
+    for(int i = 0; i < tfs.qtd ; i++){
+        if(tfs.tarefas[i].prioridade == pri){
+            fprintf(f,"prioridade: %d\n",tfs.tarefas[i].prioridade);
+            fprintf(f,"Categoria: %s\n",tfs.tarefas[i].categoria);
+            fprintf(f,"Estado: %s\n",tfs.tarefas[i].estado);
+            fprintf(f,"Descricao: %s\n",tfs.tarefas[i].descricao);
+            fprintf(f,"\n\n");
+        }
+    }
+    fclose(f);
+    printf("Um arquvio Txt com as tarefas filtradas foi criado!\n");
+    return 0;
+
+}
+
+int exp_by_cat(tarefas tfs){// cria um txt com as tarefas com a categoria que o usuarii dejesar
+    if(tfs.qtd == 0 ){
+        printf("\nNenhuma tarefa salva!");
+        return 1;
+    }
+
+    printf("\n");
+    char status[200]; 
+    printf("Qual a categoria das tarefas que deseja ver?: ");
+    scanf(" %[^\n]", status);
+
+    FILE *f = fopen("Tarefas.txt","w");
+    fprintf(f,"Suas tarefas\n");
+    for(int i = 0; i < tfs.qtd ; i++){
+        if(strcmp(tfs.tarefas[i].categoria, status) == 0){
+            fprintf(f,"prioridade: %d\n",tfs.tarefas[i].prioridade);
+            fprintf(f,"Categoria: %s\n",tfs.tarefas[i].categoria);
+            fprintf(f,"Estado: %s\n",tfs.tarefas[i].estado);
+            fprintf(f,"Descricao: %s\n",tfs.tarefas[i].descricao);
+            fprintf(f,"\n\n");
+        }
+    }
+    fclose(f);
+    printf("Um arquvio Txt com as tarefas filtradas foi criado!\n");
+    return 0;
+}
+
+int exp_by_pri_cat(tarefas tfs){//cria um txt com tarefas com a prioridade e categoria que o usuario desejar
+    if(tfs.qtd == 0 ){
+        printf("\nNenhuma tarefa salva!");
+        return 1;
+    }
+    int pri;
+    printf("Qual a prioridade das tarefas que dejesa exportar?: ");
+    scanf("%d", &pri);
+
+    printf("\n");
+    char status[200]; 
+    printf("Qual a categoria das tarefas que deseja ver?: ");
+    scanf(" %[^\n]", status);
+
+    FILE *f = fopen("Tarefas.txt","w");
+    fprintf(f,"Suas tarefas\n");
+    for(int i = 0; i < tfs.qtd ; i++){
+        if(tfs.tarefas[i].prioridade == pri && strcmp(tfs.tarefas[i].categoria, status) == 0){
+            fprintf(f,"prioridade: %d\n",tfs.tarefas[i].prioridade);
+            fprintf(f,"Categoria: %s\n",tfs.tarefas[i].categoria);
+            fprintf(f,"Estado: %s\n",tfs.tarefas[i].estado);
+            fprintf(f,"Descricao: %s\n",tfs.tarefas[i].descricao);
+            fprintf(f,"\n\n");
+        }
+    }
+    fclose(f);
+    printf("Um arquvio Txt com as tarefas filtradas foi criado!\n");
+    return 0;
+}
