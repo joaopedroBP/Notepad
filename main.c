@@ -4,8 +4,8 @@
 
 
 int main(){
-    tarefas tfs;
     //Checa se o arquivo existe com a função lerTasks
+    tarefas tfs;
     int cod = lerTasks(&tfs,"tarefas.bin");
     if(cod == 1){
         tfs.qtd = 0;
@@ -24,7 +24,7 @@ int main(){
         printf("Qual a sua escolha?: ");
         scanf("%d",&escolha);
         
-        switch(escolha){ //switch baseado na escolha do usuario.
+        switch(escolha){
             case 0:
                 T += 1;
                 break;
@@ -37,14 +37,18 @@ int main(){
             case 3:
                 deleattask(&tfs);
                 break;
+            case 4:
+                list_by_pri(tfs);
+                break;
+            case 5:
+                edit_task(&tfs);
+                break;
         }
     }
 
     cod = saveStruckt(&tfs,"tarefas.bin");
     if(cod == 1){ //verifica se o salvamento ocorreu.
         printf("falha ao salvar!");
-    }else{
-        printf("Tarefas Salvas com sucesso");
     }
 
     

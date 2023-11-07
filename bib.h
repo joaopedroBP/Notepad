@@ -4,6 +4,7 @@ typedef struct {
     int prioridade;
     char descricao[300];
     char categoria[100];
+    char estado[200];
 }tarefa;
 
 typedef struct{
@@ -19,7 +20,7 @@ int createtask(tarefas *tfs);
 int deleattask(tarefas *tfs);
 int listtask(tarefas tfs );
 int lerTasks(tarefas *tfs,char nome[]);
-int saveStruckt(tarefas *tfs , char nome[]);   
-
-
+int saveStruckt(tarefas *tfs , char nome[]);
+int list_by_pri(tarefas tfs);
+int edit_task(tarefas *tfs);
 
