@@ -237,7 +237,7 @@ int list_by_cat(tarefas tfs){//lista apenas as tarefas que possuem a prioridade 
 
     printf("\n");
     char status[200]; 
-    printf("Qual a categoria das tarefas que deseja ver?: ");
+    printf("Qual a categoria das tarefas que deseja filtrar?: ");
     scanf(" %[^\n]", status);
 
     printf("\nSua(s) tarefa(s):\n");
