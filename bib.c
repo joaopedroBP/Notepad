@@ -242,10 +242,10 @@ int list_by_cat(tarefas tfs){//lista apenas as tarefas que possuem a prioridade 
     char status[200]; 
     printf("Qual a categoria das tarefas que deseja filtrar?: ");
     scanf(" %[^\n]", status);
-    int troca;
+    tarefa troca;
     for(int i = 0; i < tfs.qtd; i++){
         for(int j = 0; j < tfs.qtd; j++){
-            if(tfs.tarefas[j].prioridade  < tfs.tarefas[j + 1]){
+            if(tfs.tarefas[j].prioridade  < tfs.tarefas[j + 1].prioridade){
                 troca = tfs.tarefas[j];
                 tfs.tarefas[j] = tfs.tarefas[j + 1];
                 tfs.tarefas[j + 1] = troca;
