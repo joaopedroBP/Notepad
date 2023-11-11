@@ -330,6 +330,7 @@ int exp_by_pri(tarefas tfs){// cria um txt com as tarefas com a prioridade que o
     fprintf(f,"Suas tarefas\n");
     for(int i = 0; i < tfs.qtd ; i++){
         if(tfs.tarefas[i].prioridade == pri){
+            fprintf(f,"numeros da tarefa: %d\n",i + 1);
             fprintf(f,"prioridade: %d\n",tfs.tarefas[i].prioridade);
             fprintf(f,"Categoria: %s\n",tfs.tarefas[i].categoria);
             fprintf(f,"Estado: %s\n",tfs.tarefas[i].estado);
@@ -354,10 +355,38 @@ int exp_by_cat(tarefas tfs){// cria um txt com as tarefas com a categoria que o 
     printf("Qual a categoria das tarefas que deseja ver?: ");
     scanf(" %[^\n]", status);
 
+    //Armazena as posições das tarefas na lista
+
+    int indices[tfs.qtd];
+    for(int i = 0; i < tfs.qtd;i ++){
+        indices[i] = i;
+    } 
+
+    tarefa troca;
+    int temp;
+
+    for(int i = 0; i < tfs.qtd; i++){
+        for(int j = 0; j < tfs.qtd; j++){
+            if(tfs.tarefas[j].prioridade  < tfs.tarefas[j + 1].prioridade){
+                troca = tfs.tarefas[j];
+                tfs.tarefas[j] = tfs.tarefas[j + 1];
+                tfs.tarefas[j + 1] = troca;
+
+                //para manter as posições originais das structs
+                
+                temp = indices[j];
+                indices[j] = indices[j + 1];
+                indices[j + 1 ] = temp;
+
+            }
+        }
+    }
+
     FILE *f = fopen("Tarefas.txt","w");
     fprintf(f,"Suas tarefas\n");
     for(int i = 0; i < tfs.qtd ; i++){
         if(strcmp(tfs.tarefas[i].categoria, status) == 0){
+            fprintf(f,"Numero da tarefa: %d\n", indices[i] + 1);
             fprintf(f,"prioridade: %d\n",tfs.tarefas[i].prioridade);
             fprintf(f,"Categoria: %s\n",tfs.tarefas[i].categoria);
             fprintf(f,"Estado: %s\n",tfs.tarefas[i].estado);
@@ -388,6 +417,7 @@ int exp_by_pri_cat(tarefas tfs){//cria um txt com tarefas com a prioridade e cat
     fprintf(f,"Suas tarefas\n");
     for(int i = 0; i < tfs.qtd ; i++){
         if(tfs.tarefas[i].prioridade == pri && strcmp(tfs.tarefas[i].categoria, status) == 0){
+            fprintf(f,"Numero da tarefa: %d\n",i + 1);
             fprintf(f,"prioridade: %d\n",tfs.tarefas[i].prioridade);
             fprintf(f,"Categoria: %s\n",tfs.tarefas[i].categoria);
             fprintf(f,"Estado: %s\n",tfs.tarefas[i].estado);
