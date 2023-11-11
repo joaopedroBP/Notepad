@@ -242,13 +242,30 @@ int list_by_cat(tarefas tfs){//lista apenas as tarefas que possuem a prioridade 
     char status[200]; 
     printf("Qual a categoria das tarefas que deseja filtrar?: ");
     scanf(" %[^\n]", status);
+
+    //Armazena as posições das tarefas na lista
+
+    int indices[tfs.qtd];
+    for(int i = 0; i < tfs.qtd;i ++){
+        indices[i] = i;
+    } 
+
     tarefa troca;
+    int temp;
+
     for(int i = 0; i < tfs.qtd; i++){
         for(int j = 0; j < tfs.qtd; j++){
             if(tfs.tarefas[j].prioridade  < tfs.tarefas[j + 1].prioridade){
                 troca = tfs.tarefas[j];
                 tfs.tarefas[j] = tfs.tarefas[j + 1];
                 tfs.tarefas[j + 1] = troca;
+
+                //para manter as posições originais das structs
+                
+                temp = indices[j];
+                indices[j] = indices[j + 1];
+                indices[j + 1 ] = temp;
+
             }
         }
     }
@@ -258,7 +275,7 @@ int list_by_cat(tarefas tfs){//lista apenas as tarefas que possuem a prioridade 
     for (int i = 0; i < tfs.qtd; i++) {
         if (strcmp(tfs.tarefas[i].categoria, status) == 0) {
             printf("\n");
-            printf("Numero da sua tarefa: %d\n", i + 1);
+            printf("Numero da sua tarefa: %d\n", indices[i] + 1);
             printf("Prioridade: %d\n", tfs.tarefas[i].prioridade);
             printf("Descricao: %s\n", tfs.tarefas[i].descricao);
             printf("Categoria: %s\n", tfs.tarefas[i].categoria);
