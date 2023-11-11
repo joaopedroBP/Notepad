@@ -215,7 +215,20 @@ int list_by_est(tarefas tfs){//lista apenas tarefas que possuem o estado que o u
     scanf(" %[^\n]", status);
 
     printf("\nSua(s) tarefa(s):\n");
-
+    int t = 10;
+    while(t != 0){
+        for (int i = 0; i < tfs.qtd; i++) {
+            if (strcmp(tfs.tarefas[i].estado, status) == 0 && tfs.tarefas[i].prioridade){
+                printf("\n");
+                printf("Numero da sua tarefa: %d\n", i + 1);
+                printf("Prioridade: %d\n", tfs.tarefas[i].prioridade);
+                printf("Descricao: %s\n", tfs.tarefas[i].descricao);
+                printf("Categoria: %s\n", tfs.tarefas[i].categoria);
+                printf("Estado: %s\n", tfs.tarefas[i].estado);
+            }
+        }
+        t--;
+    }
     return 0;
 }
 
